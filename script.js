@@ -6,8 +6,24 @@ let playerScore = 0;
 //Elementi UI
 const startBtn = document.getElementById("startBtn");
 const select = document.getElementById("level");
+const rndNumbers = [];
 
 //!FUNZIONI
+//!Funzione per creare 16 numeri casuali tutti diversi
+//
+const createRndNumbers = (min, max, numbers) => {
+  //Genera numeri casuali finchè l'array non raggiunge la lunghezza richiesta
+  while (rndNumbers.length < numbers) {
+    const rnd = Math.floor(Math.random() * (max - min)) + min;
+    //se il numero casuale non è nell'array lo mette
+    if (rndNumbers.indexOf(rnd) === -1) rndNumbers.push(rnd);
+
+    console.log(rndNumbers.sort());
+  }
+};
+
+createRndNumbers(1, 100, 16);
+
 //!Crea cella
 const createCell = (content) => {
   const grid = document.getElementById("grid");
@@ -21,8 +37,12 @@ const createCell = (content) => {
   cell.innerText = content;
   //Aggiunge event listener
   cell.addEventListener("click", (e) => {
-    if (e.target.className.includes("clicked")) {
-      console.log("clicked");
+    if (
+      e.target.className.includes("clicked") ||
+      rndNumbers.includes(parseInt(e.target.innerText))
+    ) {
+      e.target.style.backgroundColor = "red";
+      console.log("BOOOOOM!!!",`Partita terminata, il tuo punteggio è ${playerScore}`);
     } else {
       playerScore++;
       e.target.classList.add("not-allowed");
@@ -32,29 +52,19 @@ const createCell = (content) => {
 
     //Log numero cella
     console.log(`Hai cliccato sulla cella numero ${e.target.innerText}`);
+
     //Aumenta punteggio
-    console.log(playerScore);
+    console.log("Punteggio: ", playerScore);
+    //Verifica se player ha clicckato su una bomba
   });
 
   grid.appendChild(cell);
 };
 
-//!Funzione per creare 16 numeri casuali tutti diversi
-//
-const createRndNumbers = (min, max, numbers) => {
-  //Array numeri random
-  const rndNumbers = [];
-  //Genera numeri casuali finchè l'array non raggiunge la lunghezza richiesta
-  while (rndNumbers.length < numbers) {
-    const rnd = Math.floor(Math.random() * (max - min)) + min;
-    //se il numero casuale non è nell'array lo mette
-    if (rndNumbers.indexOf(rnd) === -1) rndNumbers.push(rnd);
+//Array numeri random
+console.log(rndNumbers);
 
-    console.log(rndNumbers.sort());
-  }
-};
-
-createRndNumbers(1, 100, 16);
+console.log(rndNumbers);
 
 //Event button
 
