@@ -1,0 +1,46 @@
+:root {
+  --rows: 10;
+  --cells: 10;
+}
+
+.debug {
+  border: 1px red solid;
+}
+
+body {
+  background-color: dodgerblue;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cell {
+  border: 1px #000 solid;
+  width: calc(100% / var(--rows));
+  height: calc(100% / var(--cells));
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clicked {
+  background-color: rgb(26, 60, 154);
+  color: #fff;
+}
+#level .form-select {
+    width: 10%;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
