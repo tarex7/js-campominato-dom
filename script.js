@@ -2,6 +2,8 @@ let rows = 10;
 let cells = 10;
 let totalCells = rows * cells;
 let playerScore = 0;
+let bombs = 16;
+let maxScore = totalCells - bombs;
 
 //Elementi UI
 const startBtn = document.getElementById("startBtn");
@@ -42,9 +44,15 @@ const createCell = (content) => {
       rndNumbers.includes(parseInt(e.target.innerText))
     ) {
       e.target.style.backgroundColor = "red";
-      console.log("BOOOOOM!!!",`Partita terminata, il tuo punteggio è ${playerScore}`);
+      console.log(
+        "BOOOOOM!!!",
+        `Partita terminata, il tuo punteggio è ${playerScore}`
+      );
     } else {
       playerScore++;
+      if (playerScore === maxScore) {
+        console.log(`Hai vinto! Punteggio:${playerScore}`);
+      }
       e.target.classList.add("not-allowed");
     }
     //Aggiunge classe "clicked"
