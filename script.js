@@ -7,8 +7,8 @@ let playerScore = 0;
 const startBtn = document.getElementById("startBtn");
 const select = document.getElementById("level");
 
-//FUNZIONI
-//Crea cella
+//!FUNZIONI
+//!Crea cella
 const createCell = (content) => {
   const grid = document.getElementById("grid");
 
@@ -38,6 +38,24 @@ const createCell = (content) => {
 
   grid.appendChild(cell);
 };
+
+//!Funzione per creare 16 numeri casuali tutti diversi
+//
+const createRndNumbers = (min, max, numbers) => {
+  //Array numeri random
+  const rndNumbers = [];
+  //Genera numeri casuali finchè l'array non raggiunge la lunghezza richiesta
+  while (rndNumbers.length < numbers) {
+    const rnd = Math.floor(Math.random() * (max - min)) + min;
+    //se il numero casuale non è nell'array lo mette
+    if (rndNumbers.indexOf(rnd) === -1) rndNumbers.push(rnd);
+
+    console.log(rndNumbers.sort());
+  }
+};
+
+createRndNumbers(1, 100, 16);
+
 //Event button
 
 startBtn.addEventListener("click", () => {
