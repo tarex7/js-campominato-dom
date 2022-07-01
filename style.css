@@ -19,7 +19,36 @@ body {
   height: 500px;
   justify-content: center;
   border-radius: 5px;
-  overflow: hidden;
+  position: relative;
+}
+
+.message {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  width: 510px;
+  height: 500px;
+  border-radius: 5px;
+  left: 27%;
+  background-color: rgba(143, 9, 9, 0.6);
+  z-index: 5;
+  color: rgb(255, 255, 255);
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.message h1 {
+  font-size: 5rem;
 }
 
 .cell {
@@ -38,7 +67,7 @@ body {
   color: #fff;
 }
 #level .form-select {
-    width: 10%;
+  width: 10%;
 }
 
 .not-allowed {
