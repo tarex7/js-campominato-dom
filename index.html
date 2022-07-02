@@ -11,6 +11,19 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -18,21 +31,32 @@
       <div class="row">
         <div class="col-12 mt-5 d-flex justify-content-center">
           <div id="startBtn" class="btn btn-dark">START</div>
-          <select id="level" class="form-select w-25 ms-2">
+          <select id="level" class="form-select w-50 ms-2">
             <option selected value="1">Facile</option>
             <option value="2">Normale</option>
             <option value="3">Difficile</option>
           </select>
         </div>
         <div class="col-12">
-          <div class="message">
-            <h1 id="game-over"></h1>
-            <h2 id="win-lose"></h2>
-            <h3 id="score"></h3>
+          <div style="background-color: red" class="message">
+            <h3 id="game-over"></h3>
+            <p id="win-lose"></p>
+            <p id="score"></p>
           </div>
         </div>
         <div class="col-12">
-          <div id="grid"></div>
+          <div id="grid">
+            <div
+              class="d-flex justify-content-center align-items-center flex-column"
+            >
+              <h1 id="title" class="display-4 fw-bold bg-warning p-3">MINEFIELD</h1>
+              <div class="mt-3">
+                <i class="fa-solid fa-bomb fa-bomb-xl"></i>
+                <i class="fa-solid fa-bomb fa-bomb-xl"></i>
+                <i class="fa-solid fa-bomb fa-bomb-xl"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

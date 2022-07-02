@@ -50,25 +50,35 @@ const createCell = (totalCells) => {
       cell.classList.add("bomb");
 
     //! Logica click su cella
-    function onCellClick(e) {
+    const onCellClick = (e) => {
       //Previene click su celle già cliccate
       if (e.target.className.includes("clicked") || notAllowed) {
         return;
       }
 
+      //Aggiunge classi
+      cell.classList.add("clicked", "not-allowed");
+
       //Controlla se viene cliccata una bomba
       if (rndNumbers.includes(parseInt(e.target.innerText))) {
         //Imposta sfondo rosso alla cella
         e.target.style.backgroundColor = "red";
+        e.target.innerHTML = "<i class='fa-solid fa-bomb fa-2x text-dark'></i>";
         //Mostra messaggi
         message.classList.add("show");
         gameOver.innerText = "BOOOOM!";
         score.innerText = `Hai totalizzato ${playerScore} punti`;
 
+        //Aumenta punteggio
+        playerScore++;
+
         //!Funzione mostra bombe
         function showBombs(cell) {
-          if (cell.classList.contains("bomb"))
+          if (cell.classList.contains("bomb")) {
             cell.style.backgroundColor = "red";
+            cell.innerHTML =
+              "<i  class='fa-solid fa-bomb fa-2x'></i>";
+          }
         }
         allCells.forEach(showBombs);
 
@@ -76,12 +86,6 @@ const createCell = (totalCells) => {
         notAllowed = true;
       }
 
-      //Aggiunge classi
-      cell.classList.add("clicked", "not-allowed");
-
-      //Aumenta punteggio
-      playerScore++;
-      console.log(maxScore);
       //Controlla se viene raggiunto il punteggio massimo
       if (playerScore === maxScore) {
         message.classList.add("show");
@@ -92,14 +96,13 @@ const createCell = (totalCells) => {
         //Blocca click su altre celle
         notAllowed = true;
       }
-    }
-    //Aggiunge evento alla cella
+    };
+    //!Aggiunge evento alla cella
     cell.addEventListener("click", onCellClick);
     //Inserisce cella nella grid
     grid.appendChild(cell);
   }
-  //Lista bombe
-  const bombs = document.querySelectorAll(".bomb");
+
   //Lista celle
   const allCells = document.querySelectorAll(".cell");
 };
@@ -117,9 +120,11 @@ startBtn.addEventListener("click", () => {
   switch (parseInt(level.value)) {
     //Easy
     case 1:
-      createRndNumbers(1, 100, 16);
-      createCell(totalCells);
       maxScore = totalCells - bombs;
+
+      createRndNumbers(min, totalCells, bombs);
+      createCell(totalCells);
+
       break;
 
     //Normal
@@ -127,10 +132,14 @@ startBtn.addEventListener("click", () => {
     case 2:
       document.documentElement.style.setProperty("--rows", `9`);
       document.documentElement.style.setProperty("--cells", `9`);
-      totalCells = 81;
-      createRndNumbers(1, 81, 16);
-      createCell(totalCells);
+
+      rows = 9;
+      cells = 9;
+      totalCells = rows * cells;
       maxScore = totalCells - bombs;
+
+      createRndNumbers(min, totalCells, bombs);
+      createCell(totalCells);
 
       break;
 
@@ -138,7 +147,10 @@ startBtn.addEventListener("click", () => {
     case 3:
       document.documentElement.style.setProperty("--rows", `7`);
       document.documentElement.style.setProperty("--cells", `7`);
-      totalCells = 49;
+
+      rows = 7;
+      cells = 7;
+      totalCells = rows * cells;
       maxScore = totalCells - bombs;
 
       createRndNumbers(1, 49, 16);

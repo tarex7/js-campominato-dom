@@ -4,7 +4,8 @@
 }
 
 body {
-  background-color: dodgerblue;
+  background-color: rgb(49, 49, 49);
+  font-family: 'Press Start 2P', cursive;
 }
 
 #grid {
@@ -14,8 +15,14 @@ body {
   width: 500px;
   height: 500px;
   justify-content: center;
-  border-radius: 5px;
   position: relative;
+  border: 10px solid #000;
+  background-color: rgb(121, 0, 0);
+}
+
+.border_3 {
+  border-radius: 3px;
+
 }
 
 .message {
@@ -36,7 +43,6 @@ body {
 }
 
 .message h1 {
-  font-size: 2rem;
 }
 
 .cell {
@@ -51,10 +57,19 @@ body {
 }
 
 .clicked {
-  background-color: rgb(26, 60, 154);
+  background-color: rgb(34, 114, 0);
   color: #fff;
 }
 
 .not-allowed {
   cursor: not-allowed;
 }
+
+.fa-bomb,#title {
+  color: #000;
+}
+
+.fa-bomb-xl {
+  font-size: 5rem;
+}
+
