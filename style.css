@@ -3,10 +3,6 @@
   --cells: 10;
 }
 
-.debug {
-  border: 1px red solid;
-}
-
 body {
   background-color: dodgerblue;
 }
@@ -14,7 +10,7 @@ body {
 #grid {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px auto;
+  margin: 0 auto;
   width: 500px;
   height: 500px;
   justify-content: center;
@@ -23,32 +19,24 @@ body {
 }
 
 .message {
-  position: absolute;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 50px auto;
-  width: 510px;
-  height: 500px;
+  padding: 10px;
+  visibility: hidden;
+  height: 100px;
+  width: 500px;
+  margin: 20px auto;
   border-radius: 5px;
-  left: 27%;
-  background-color: rgba(143, 9, 9, 0.6);
+  background-color: rgb(169, 2, 2);
   z-index: 5;
   color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 .show {
-  display: flex;
-}
-
-.hide {
-  display: none;
+  visibility: visible;
 }
 
 .message h1 {
-  font-size: 5rem;
+  font-size: 2rem;
 }
 
 .cell {
@@ -65,9 +53,6 @@ body {
 .clicked {
   background-color: rgb(26, 60, 154);
   color: #fff;
-}
-#level .form-select {
-  width: 10%;
 }
 
 .not-allowed {
