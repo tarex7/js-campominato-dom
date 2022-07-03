@@ -69,15 +69,11 @@ const createCell = (totalCells) => {
         gameOver.innerText = "BOOOOM!";
         score.innerText = `Hai totalizzato ${playerScore} punti`;
 
-        //Aumenta punteggio
-        playerScore++;
-
         //!Funzione mostra bombe
         function showBombs(cell) {
           if (cell.classList.contains("bomb")) {
             cell.style.backgroundColor = "red";
-            cell.innerHTML =
-              "<i  class='fa-solid fa-bomb fa-2x'></i>";
+            cell.innerHTML = "<i  class='fa-solid fa-bomb fa-2x'></i>";
           }
         }
         allCells.forEach(showBombs);
@@ -85,6 +81,9 @@ const createCell = (totalCells) => {
         //Blocca click su altre celle
         notAllowed = true;
       }
+      //Aumenta punteggio
+      playerScore++;
+      console.log(playerScore);
 
       //Controlla se viene raggiunto il punteggio massimo
       if (playerScore === maxScore) {
