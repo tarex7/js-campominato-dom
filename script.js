@@ -83,7 +83,6 @@ const createCell = (totalCells) => {
       }
       //Aumenta punteggio
       playerScore++;
-      console.log(playerScore);
 
       //Controlla se viene raggiunto il punteggio massimo
       if (playerScore === maxScore) {
@@ -119,6 +118,12 @@ startBtn.addEventListener("click", () => {
   switch (parseInt(level.value)) {
     //Easy
     case 1:
+      document.documentElement.style.setProperty("--rows", `10`);
+      document.documentElement.style.setProperty("--cells", `10`);
+
+      rows = 10;
+      cells =10;
+      totalCells = rows * cells;
       maxScore = totalCells - bombs;
 
       createRndNumbers(min, totalCells, bombs);
